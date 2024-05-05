@@ -10,7 +10,7 @@ namespace MMA.UI
         [SerializeField] private TileFactory _tileFactory;
 
         [Header("References")]
-        [SerializeField] private Transform _tilesParent;
+        [SerializeField] private FlexibleGridLayout _tilesLayout;
 
         public Grid Grid;
 
@@ -30,12 +30,14 @@ namespace MMA.UI
         public void SpawnTiles(Grid grid)
         {
             grid.Fill();
+            _tilesLayout.fitType = FlexibleGridLayout.FitType.FIXEDROWS;
+            _tilesLayout.rows = grid.NumberOfRows;
 
             for (int i = 0; i < grid.NumberOfRows; i++)
             {
                 for (int j = 0; j < grid.NumberOfColumns; j++)
                 {
-                    _tileFactory.CreateTile(grid.Tiles[i,j], _tilesParent);
+                    _tileFactory.CreateTile(grid.Tiles[i,j], _tilesLayout.transform);
                 }
             }
         }
