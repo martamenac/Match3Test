@@ -397,6 +397,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grid
       objectReference: {fileID: 0}
+    - target: {fileID: 2922453662402965416, guid: a2358460329b79644a4daa4b16d0b531, type: 3}
+      propertyPath: cellSize.y
+      value: NaN
+      objectReference: {fileID: 0}
     - target: {fileID: 5482374718998183762, guid: a2358460329b79644a4daa4b16d0b531, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

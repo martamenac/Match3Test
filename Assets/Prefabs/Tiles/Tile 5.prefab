@@ -10,19 +10,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1291752586411734813, guid: 7eb0782ea75d4f648b667df640b483f0, type: 3}
       propertyPath: m_text
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1805509226952039170, guid: 7eb0782ea75d4f648b667df640b483f0, type: 3}
       propertyPath: m_Color.b
-      value: 0.87058824
+      value: 0.32941177
       objectReference: {fileID: 0}
     - target: {fileID: 1805509226952039170, guid: 7eb0782ea75d4f648b667df640b483f0, type: 3}
       propertyPath: m_Color.g
-      value: 0.95686275
+      value: 0.33333334
       objectReference: {fileID: 0}
     - target: {fileID: 1805509226952039170, guid: 7eb0782ea75d4f648b667df640b483f0, type: 3}
       propertyPath: m_Color.r
-      value: 0.8156863
+      value: 0.88235295
       objectReference: {fileID: 0}
     - target: {fileID: 2641277222389422101, guid: 7eb0782ea75d4f648b667df640b483f0, type: 3}
       propertyPath: m_Pivot.x
@@ -106,19 +106,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4822777631690985484, guid: 7eb0782ea75d4f648b667df640b483f0, type: 3}
       propertyPath: m_Name
-      value: Tile 2
+      value: Tile 5
       objectReference: {fileID: 0}
     - target: {fileID: 8793258865279650748, guid: 7eb0782ea75d4f648b667df640b483f0, type: 3}
       propertyPath: m_Color.b
-      value: 0.37254903
+      value: 0.56078434
       objectReference: {fileID: 0}
     - target: {fileID: 8793258865279650748, guid: 7eb0782ea75d4f648b667df640b483f0, type: 3}
       propertyPath: m_Color.g
-      value: 0.47843137
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 8793258865279650748, guid: 7eb0782ea75d4f648b667df640b483f0, type: 3}
       propertyPath: m_Color.r
-      value: 0.8784314
+      value: 0.9490196
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

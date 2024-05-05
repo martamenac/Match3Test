@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NumberOfRows: 10
   NumberOfColumns: 10
-  AmountOfTileTypes: 4
+  AmountOfTileTypes: 5

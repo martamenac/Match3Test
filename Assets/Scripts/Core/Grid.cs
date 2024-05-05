@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MMA.Core
@@ -25,6 +26,14 @@ namespace MMA.Core
                 {
                     var tile = GetRandomTile(amountOfTileTypes);
                     SetNeighbours(tile, i, j);
+                    var exceptions = new List<int>();
+
+                    while (tile.IsPartOfCombo || exceptions.Count >= amountOfTileTypes)
+                    {
+                        exceptions.Add(tile.TileType);
+                        tile = GetRandomTile(amountOfTileTypes, exceptions);
+                        SetNeighbours(tile, i, j);
+                    }
 
                     Tiles[i, j] = tile;
                 }
@@ -54,12 +63,19 @@ namespace MMA.Core
                 eastNeighbour.SetNeighbour(Direction.West, tile);
         }
 
-        private GridTile GetRandomTile(int amountOfTileTypes)
+        private GridTile GetRandomTile(int amountOfTileTypes, List<int> exceptions = null)
         {
-            var tileType = Random.Range(0, amountOfTileTypes);
+            if (exceptions == null)
+                exceptions = new List<int>();
+
+            int tileType;
+            do  //This approach could cause an infinite loop or do many iterations before finding the right type
+            {
+                tileType = Random.Range(0, amountOfTileTypes);
+            }
+            while (exceptions.Contains(tileType));
 
             return new GridTile(tileType);
-        }
         }
 
         public void SwapTiles()

@@ -8,5 +8,10 @@ namespace MMA.Core
         {
             TileType = type;
         }
+
+        public bool Matches(Tile otherTile)
+        {
+            return TileType == otherTile.TileType;
+        }
     }
 }
