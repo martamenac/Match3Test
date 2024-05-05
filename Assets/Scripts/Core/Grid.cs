@@ -15,7 +15,7 @@
             Tiles = new Tile[NumberOfRows,NumberOfColumns];
         }
 
-        public void GenerateTiles()
+        public void Fill()
         {
             for (int i = 0; i < NumberOfRows; i++)
             {
