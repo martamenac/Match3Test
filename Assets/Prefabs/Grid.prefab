@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _configuration: {fileID: 11400000, guid: 455aa93ea10797d4d8ce9c05a990344d, type: 2}
+  _tileFactory: {fileID: 11400000, guid: 40f973f3e76e1f44cb18a7e480ca18ad, type: 2}
 --- !u!1 &5450137431604720907
 GameObject:
   m_ObjectHideFlags: 0

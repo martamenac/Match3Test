@@ -1,12 +1,13 @@
 using MMA.Configuration;
 using UnityEngine;
 using Grid = MMA.Core.Grid;
+
 namespace MMA.UI
 {
     public class GridUIHandler : MonoBehaviour
     {
-        //This would be somewhere else but for simplicity it's here
-        [SerializeField] private GridConfiguration _configuration;
+        [SerializeField] private GridConfiguration _configuration;  //This would be somewhere else but for simplicity it's here
+        [SerializeField] private TileFactory _tileFactory;
 
         public Grid Grid;
 
@@ -26,6 +27,14 @@ namespace MMA.UI
         public void SpawnTiles(Grid grid)
         {
             grid.Fill();
+
+            for (int i = 0; i < grid.NumberOfRows; i++)
+            {
+                for (int j = 0; j < grid.NumberOfColumns; j++)
+                {
+                    _tileFactory.CreateTile(grid.Tiles[i,j]);
+                }
+            }
         }
     }
 }

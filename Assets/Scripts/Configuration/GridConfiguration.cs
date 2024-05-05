@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+
 namespace MMA.Configuration
 {
     [CreateAssetMenu(menuName = MMA.Utils.EditorUtils.ConfigMenuDirection + "Grid configuration")]
