@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using AYellowpaper.SerializedCollections;
+﻿using AYellowpaper.SerializedCollections;
 using MMA.Core;
 using UnityEngine;
 
@@ -10,7 +9,7 @@ namespace MMA.UI
     {
         public SerializedDictionary<int, TileUIHandler> Tiles;
 
-        public TileUIHandler CreateTile(Tile tile, Transform parent = null)
+        public TileUIHandler CreateTile(GridTile tile, Transform parent = null)
         {
             var tileGO = Instantiate(Tiles[tile.TileType], parent);
             tileGO.Initialize(tile);

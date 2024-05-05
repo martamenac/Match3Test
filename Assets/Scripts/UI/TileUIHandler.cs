@@ -6,12 +6,12 @@ namespace MMA.UI
 {
     public class TileUIHandler : MonoBehaviour
     {
-        public Tile Tile;
+        public GridTile Tile;
 
         [Header("Testing")]
         [SerializeField] private TextMeshProUGUI _text;
 
-        public void Initialize(Tile tile)
+        public void Initialize(GridTile tile)
         {
             Tile = tile;
 

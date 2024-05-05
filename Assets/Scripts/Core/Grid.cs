@@ -1,4 +1,3 @@
-﻿using System;
 using UnityEngine;
 
 namespace MMA.Core
@@ -8,14 +7,14 @@ namespace MMA.Core
         public int NumberOfRows;
         public int NumberOfColumns;
 
-        public Tile[,] Tiles;
+        public GridTile[,] Tiles;
 
         public Grid(int rows, int columns)
         {
             NumberOfRows = rows;
             NumberOfColumns = columns;
 
-            Tiles = new Tile[NumberOfRows,NumberOfColumns];
+            Tiles = new GridTile[NumberOfRows,NumberOfColumns];
         }
 
         public void Fill(int amountOfTileTypes)
@@ -24,15 +23,35 @@ namespace MMA.Core
             {
                 for (int j = 0; j < NumberOfColumns; j++)
                 {
-                    Tiles[i, j] = GetRandomTile(amountOfTileTypes);
+                    var tile = GetRandomTile(amountOfTileTypes);
+                    SetNeighbours(tile, i, j);
+
+                    Tiles[i, j] = tile;
                 }
             }
         }
 
-        private Tile GetRandomTile(int amountOfTileTypes)
+        public void SetNeighbours(GridTile tile, int row, int column)
+        {
+            tile.SetNeighbour(Direction.North, row <= 0 ? null : Tiles[row - 1, column]);
+            tile.Neighbours[Direction.North]?.SetNeighbour(Direction.South, tile);
+
+            tile.SetNeighbour(Direction.South, row >= NumberOfRows - 1 ? null : Tiles[row + 1, column]);
+            tile.Neighbours[Direction.South]?.SetNeighbour(Direction.North, tile);
+
+            tile.SetNeighbour(Direction.West, column <= 0 ? null : Tiles[row, column - 1]);
+            tile.Neighbours[Direction.West]?.SetNeighbour(Direction.East, tile);
+
+            tile.SetNeighbour(Direction.East, column >= NumberOfColumns - 1 ? null : Tiles[row, column + 1]);
+            tile.Neighbours[Direction.East]?.SetNeighbour(Direction.West, tile);
+        }
+
+        private GridTile GetRandomTile(int amountOfTileTypes)
         {
             var tileType = UnityEngine.Random.Range(0, amountOfTileTypes);
-            return new Tile(tileType);
+
+            return new GridTile(tileType);
+        }
         }
 
         public void SwapTiles()

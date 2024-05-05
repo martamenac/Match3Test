@@ -90,8 +90,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 1291752586411734813}
-  _directions:
-    _serializedList: []
 --- !u!1 &6661396830828622200
 GameObject:
   m_ObjectHideFlags: 0
