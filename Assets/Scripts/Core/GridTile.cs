@@ -16,10 +16,24 @@ namespace MMA.Core
 
         public void SetNeighbour(Direction direction, GridTile neighbourTile)
         {
+            if (neighbourTile == null)
+                return;
+
             if (Neighbours.ContainsKey(direction))
                 Neighbours[direction] = neighbourTile;
             else
                 Neighbours.Add(direction, neighbourTile);
+        }
+
+        public bool HasNeighbour(Direction direction, out GridTile neighbourTile)
+        {
+            neighbourTile = null;
+
+            if (!Neighbours.ContainsKey(direction))
+                return false;
+
+            neighbourTile = Neighbours[direction];
+            return true;
         }
     }
 }
