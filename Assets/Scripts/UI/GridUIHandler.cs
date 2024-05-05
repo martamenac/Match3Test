@@ -9,6 +9,9 @@ namespace MMA.UI
         [SerializeField] private GridConfiguration _configuration;  //This would be somewhere else but for simplicity it's here
         [SerializeField] private TileFactory _tileFactory;
 
+        [Header("References")]
+        [SerializeField] private Transform _tilesParent;
+
         public Grid Grid;
 
         //This would also be called from somewhere else, but for simplicity it's here
@@ -32,7 +35,7 @@ namespace MMA.UI
             {
                 for (int j = 0; j < grid.NumberOfColumns; j++)
                 {
-                    _tileFactory.CreateTile(grid.Tiles[i,j]);
+                    _tileFactory.CreateTile(grid.Tiles[i,j], _tilesParent);
                 }
             }
         }
