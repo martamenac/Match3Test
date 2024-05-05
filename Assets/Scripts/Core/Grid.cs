@@ -1,4 +1,7 @@
-﻿namespace MMA.Core
+﻿using System;
+using UnityEngine;
+
+namespace MMA.Core
 {
     public class Grid
     {
@@ -15,20 +18,21 @@
             Tiles = new Tile[NumberOfRows,NumberOfColumns];
         }
 
-        public void Fill()
+        public void Fill(int amountOfTileTypes)
         {
             for (int i = 0; i < NumberOfRows; i++)
             {
                 for (int j = 0; j < NumberOfColumns; j++)
                 {
-                    Tiles[i, j] = GetRandomTile();
+                    Tiles[i, j] = GetRandomTile(amountOfTileTypes);
                 }
             }
         }
 
-        private Tile GetRandomTile()
+        private Tile GetRandomTile(int amountOfTileTypes)
         {
-            return new Tile(0);
+            var tileType = UnityEngine.Random.Range(0, amountOfTileTypes);
+            return new Tile(tileType);
         }
 
         public void SwapTiles()

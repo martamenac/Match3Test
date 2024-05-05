@@ -24,12 +24,12 @@ namespace MMA.UI
         {
             Grid = new Grid(config.NumberOfRows, config.NumberOfColumns);
 
-            SpawnTiles(Grid);
+            SpawnTiles(Grid, config.AmountOfTileTypes);
         }
 
-        public void SpawnTiles(Grid grid)
+        public void SpawnTiles(Grid grid, int amountOfTileTypes)
         {
-            grid.Fill();
+            grid.Fill(amountOfTileTypes);
             _tilesLayout.fitType = FlexibleGridLayout.FitType.FIXEDROWS;
             _tilesLayout.rows = grid.NumberOfRows;
 
