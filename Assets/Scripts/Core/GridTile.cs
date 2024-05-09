@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace MMA.Core
 {
@@ -12,6 +13,17 @@ namespace MMA.Core
 
         public Action OnBecomePartOfCombo;
 
+        private Vector2Int _gridPosition;
+
+        public Vector2Int GridPosition
+        {
+            get => _gridPosition;
+            set
+            {
+                _gridPosition = value;
+            }
+        }
+
         public GridTile(int type) : base(type)
         {
             Neighbours = new Dictionary<Direction, GridTile>();
@@ -23,13 +35,16 @@ namespace MMA.Core
                 return;
 
             if (Neighbours.ContainsKey(direction))
+            {
+                if (Neighbours[direction] == neighbourTile)
+                    return;
+
                 Neighbours[direction] = neighbourTile;
+            }
             else
                 Neighbours.Add(direction, neighbourTile);
 
             IsPartOfCombo = IsPartOfCombo || CheckComboInDirection(direction);
-            if (IsPartOfCombo)
-                OnBecomePartOfCombo?.Invoke();
         }
 
         public bool HasNeighbour(Direction direction, out GridTile neighbourTile)

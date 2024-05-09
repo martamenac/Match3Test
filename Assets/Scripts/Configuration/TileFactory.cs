@@ -9,10 +9,10 @@ namespace MMA.UI
     {
         public SerializedDictionary<int, TileUIHandler> Tiles;
 
-        public TileUIHandler CreateTile(GridTile tile, Transform parent = null)
+        public TileUIHandler CreateTile(GridTile tile, GridUIHandler gridHandler, Transform parent = null)
         {
             var tileGO = Instantiate(Tiles[tile.TileType], parent);
-            tileGO.Initialize(tile);
+            tileGO.Initialize(tile, gridHandler);
 
             return tileGO;
         }

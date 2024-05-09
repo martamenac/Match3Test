@@ -1,4 +1,6 @@
+using System;
 using MMA.Configuration;
+using MMA.Core;
 using UnityEngine;
 using Grid = MMA.Core.Grid;
 
@@ -37,9 +39,28 @@ namespace MMA.UI
             {
                 for (int j = 0; j < grid.NumberOfColumns; j++)
                 {
-                    _tileFactory.CreateTile(grid.Tiles[i,j], _tilesLayout.transform);
+                    _tileFactory.CreateTile(grid.Tiles[i,j], this, _tilesLayout.transform);
                 }
             }
+        }
+
+        public void SwapTile(TileUIHandler tile, Core.Direction direction)
+        {
+            if (tile.Tile.HasNeighbour(direction, out var neighbour))
+            {
+                var neighbourTileHandler = GetTileHandler(neighbour.GridPosition);
+                var firstTileIndex = tile.transform.GetSiblingIndex();
+
+                Grid.SwapTiles(tile.Tile, neighbour);
+
+                tile.transform.SetSiblingIndex(neighbourTileHandler.transform.GetSiblingIndex());
+                neighbourTileHandler.transform.SetSiblingIndex(firstTileIndex);
+            }
+        }
+
+        private TileUIHandler GetTileHandler(Vector2Int position)
+        {
+            return _tilesLayout.transform.GetChild(position.x * Grid.NumberOfColumns + position.y).GetComponent<TileUIHandler>();
         }
     }
 }

@@ -35,7 +35,7 @@ namespace MMA.Core
                         SetNeighbours(tile, i, j);
                     }
 
-                    Tiles[i, j] = tile;
+                    PlaceTile(tile, i, j);
                 }
             }
         }
@@ -78,9 +78,20 @@ namespace MMA.Core
             return new GridTile(tileType);
         }
 
-        public void SwapTiles()
+        private void PlaceTile(GridTile tile, int row, int column)
         {
+            tile.GridPosition = new Vector2Int(row, column);
+            Tiles[row, column] = tile;
 
+            SetNeighbours(tile, row, column);
+        }
+
+        public void SwapTiles(GridTile first, GridTile second)
+        {
+            var firstPos = first.GridPosition;
+
+            PlaceTile(first, second.GridPosition.x, second.GridPosition.y);
+            PlaceTile(second, firstPos.x, firstPos.y);
         }
 
         public void ShiftColumnDown()
